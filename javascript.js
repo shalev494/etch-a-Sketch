@@ -3,7 +3,7 @@ const container2 = document.querySelector('.container2');
 const resetButton = document.querySelector('button');
 resetButton.style.backgroundColor='white';
 let color="black";
-let amountOf = 4;
+let amountOf = 16;
 const grid =(blocks)=>{
   const warapper= document.createElement('div');
   warapper.classList.add('warapper');
@@ -38,14 +38,23 @@ resetButton.addEventListener('click',()=>{
   warapper.remove();
   grid(inputSize);
 })
+let currentColor;
 function colorDiv() {
+  
   if (currentColor === "random") {
     this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+  } else if (currentColor==='eraser'){
+    this.style.backgroundColor = 'white';
   } else {
-    this.style.backgroundColor = currentColor;
+    this.style.backgroundColor = 'black';
   }
 }
+
 function setColor(colorChoice) {
   currentColor = colorChoice;
 }
-
+function resetBoard() {
+ let divs=document.querySelectorAll("div");
+ divs.forEach((gridBlock) =>
+ gridBlock.style.backgroundColor="white");
+ }
